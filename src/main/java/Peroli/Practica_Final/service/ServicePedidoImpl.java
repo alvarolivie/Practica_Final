@@ -17,7 +17,8 @@ public class ServicePedidoImpl implements ServicePedidos {
     @Override
     public boolean AddPedido(Pedido pedido){
         //añade al repository y devuelvo true si ha funcionado
-        return repositoryPeroli.save(pedido);
+        repositoryPeroli.save(pedido);
+        return true;
     }
 
     @Override
@@ -30,6 +31,7 @@ public class ServicePedidoImpl implements ServicePedidos {
 
         Pedido pedido = pedido1.get();
         repositoryPeroli.delete(pedido);
+        return true;
     }
 
     @Override
@@ -52,7 +54,7 @@ public class ServicePedidoImpl implements ServicePedidos {
         pedido.setEstado(datos.getEstado());
         repositoryPeroli.save(pedido);
 
-        return
+        return true;
     }
 
     @Override
