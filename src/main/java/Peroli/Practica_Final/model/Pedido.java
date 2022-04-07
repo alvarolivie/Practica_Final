@@ -3,6 +3,7 @@ package Peroli.Practica_Final.model;
 
 import lombok.Data;
 import lombok.Generated;
+
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.Email;
