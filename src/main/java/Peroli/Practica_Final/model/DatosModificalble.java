@@ -13,7 +13,6 @@ public class DatosModificalble {
     private Momento momento;
     private String ciudad;
     private String dir1;
-    private String dir2;
     private double precio;
     private Estado estado;
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 @Service
 public class ServicePedidoImpl implements ServicePedidos {
@@ -49,7 +50,7 @@ public class ServicePedidoImpl implements ServicePedidos {
         pedido.setMomento(datos.getMomento());
         pedido.setCiudad(datos.getCiudad());
         pedido.setDir1(datos.getDir1());
-        pedido.setDir2(datos.getDir2());
+
         pedido.setPrecio(datos.getPrecio());
         pedido.setEstado(datos.getEstado());
         repositoryPeroli.save(pedido);

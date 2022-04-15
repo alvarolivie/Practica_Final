@@ -16,7 +16,7 @@ public class Pedido {
 
     @Id
     private Long id;
-    private Email email;
+    private String email;
     private String fullname;
     private String tel;
     private int personas;
@@ -25,7 +25,6 @@ public class Pedido {
     private Momento momento;
     private String ciudad;
     private String dir1;
-    private String dir2;
     private double precio;
     private Estado estado;
 

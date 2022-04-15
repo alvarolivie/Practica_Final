@@ -1,0 +1,1 @@
+INSERT INTO PEDIDO(ID, EMAIL, FULLNAME, TEL, PERSONAS, FECHA, MOMENTO, CIUDAD, DIR1) VALUES (1, 'alvarolivie@gmail.com','Alvaro Olivie', '670986614', 10, '2022-10-31', 'CENA', 'Madrid', 'velazquez 112');
