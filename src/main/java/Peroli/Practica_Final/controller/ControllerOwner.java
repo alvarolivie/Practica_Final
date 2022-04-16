@@ -6,6 +6,7 @@ import Peroli.Practica_Final.service.ServicePedidoImpl;
 import Peroli.Practica_Final.service.ServicePedidos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,35 +14,34 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 
 @RestController()
+@RequestMapping("elPeroli/v1/owner")
 public class ControllerOwner {
 
     @Autowired
     private ServicePedidos servicePedidos; //me he quedado aqui. Falta implementar el repository y validar. check errores de todo
 
-    @GetMapping("owner/viewPedidos")
+    @GetMapping("/viewPedidos")
     @ResponseStatus(HttpStatus.OK)
-    public ArrayList<Pedido> GetPedidos() {
-        return servicePedidos.GetPedidos();
+    public ResponseEntity<ArrayList<Pedido>> GetPedidos() {
+        return ResponseEntity.ok().body(servicePedidos.GetPedidos());
     }
 
-    @PutMapping("owner/updatePedido/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public String UpadatePedido(@PathVariable(value = "id") long id, @Valid @RequestBody DatosModificalble datosModificalble) {
+    @PutMapping("/updatePedido/{id}")
+    public ResponseEntity<Pedido> UpadatePedido(@PathVariable(value = "id") Long id, @Valid @RequestBody DatosModificalble datosModificalble) {
         servicePedidos.UpdatePedido(id, datosModificalble);
-        return "";
+        Pedido pedido = servicePedidos.GetPedido(id);
+        return ResponseEntity.ok().body(pedido);
     }
 
-    @DeleteMapping("owner/deletePedido/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public String DeletePedido(@PathVariable(value = "id") long id) {
+    @DeleteMapping("/deletePedido/{id}")
+    public ResponseEntity<Long> DeletePedido(@PathVariable(value = "id") Long id) {
         servicePedidos.DeletePedido(id);
-        return "usuario borrado";
+        return ResponseEntity.ok().body(id);
     }
 
-    @PostMapping("owner/newPedido")
-    @ResponseStatus(HttpStatus.OK)
-    public String AddPedido(@Valid @RequestBody Pedido pedido){
+    @PostMapping("/newPedido")
+    public ResponseEntity<Pedido> AddPedido(@Valid @RequestBody Pedido pedido){
         servicePedidos.AddPedido(pedido);
-        return pedido.toString();
+        return ResponseEntity.ok().body(pedido);
     }
 }

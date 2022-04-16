@@ -1,17 +1,25 @@
 package Peroli.Practica_Final.model;
 
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.Generated;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Embedded;
+import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.Email;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Data
+@Builder
+@Table("PEDIDO")
 public class Pedido {
 
     @Id
@@ -21,11 +29,11 @@ public class Pedido {
     private String tel;
     private int personas;
     private int arroz;
-    private LocalDate date;
+    private LocalDate fecha;
     private Momento momento;
     private String ciudad;
     private String dir1;
-    private double precio;
-    private Estado estado;
+    private BigDecimal precio = BigDecimal.valueOf(0);
+    private Estado estado = Estado.PENDIENTE;
 
 }
