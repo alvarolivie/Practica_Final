@@ -12,7 +12,7 @@
     <title>El Peroli</title>
     <script src="js/Formulario.js"></script>
 </head>
-<body>
+<body onload = "selectPedido()">
 
 <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -39,7 +39,7 @@
 
         </div>
         <div class="col-md-8 themed-grid-col">
-            <form>
+            <form id = "form">
 
                 <div class="row">
                     <label for="numPersonas" class="form-label">Indica el numero de personas que van a comer</label>
@@ -57,12 +57,21 @@
 
 
                 <div class="row">
-                    <label for="fecha" class="form-label">Fecha</label>
+                    <label for="Ciudad" class="form-label">Ciudad</label>
 
-                    <select class="custom-select">
+                    <select class="custom-select" id = "Ciudad">
                         <option value="Madrid" selected>Madrid</option>
                         <option value="Santander">Santander</option>
                         <option value="Comillas">Comillas</option>
+
+                    </select>
+                </div>
+                <br>
+                <br>
+
+                <div class="row">
+                    <label for="Dir1" class="form-label">Direccion</label>
+                    <input type="text" class="form-control" id = "Dir1">
 
                     </select>
                 </div>
@@ -84,7 +93,7 @@
                 <br>
                 <br>
 
-                <button type="submit" class="btn btn-primary">Continuar</button>
+                <button type="button" class="btn btn-primary" onclick="mandarForm()">Continuar</button>
                 </form>
             <!--<form>
                 <div class="row">
