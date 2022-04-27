@@ -70,39 +70,43 @@ let mandarForm = async () => {
 
 let siguienteForm = () => {
     let inputs = document.getElementsByTagName("input")
-    info.push(inputs.item(0).value, inputs.item(1).value,inputs.item(2).value);
-    info.push(document.getElementById("Ciudad").value)
-    if (inputs.item(3).checked){
-        info.push("COMIDA")
-    } else{
-        info.push("CENA")
+    if (inputs.item(0).value != '' & inputs.item(1).value != '' & inputs.item(2).value != '') {
+        info.push(inputs.item(0).value, inputs.item(1).value, inputs.item(2).value);
+        info.push(document.getElementById("Ciudad").value)
+        if (inputs.item(3).checked) {
+            info.push("COMIDA")
+        } else {
+            info.push("CENA")
+        }
+        console.log(info)
+        let form = document.getElementById("form");
+        form.innerHTML = '<div class="row">' +
+            ' <label type="nombre" class="form-label">Nombre:</label>' +
+            ' <input type="text" class="form-control" id="nombre">' +
+            '</div>' +
+            '<br>' +
+            '<br>' +
+
+            '<div class="row">' +
+            '<label type="email" class="form-label">Correo electronico:</label>' +
+            ' <input type="text" class="form-control" id="email">' +
+            '</div>' +
+            ' <br>' +
+            '<br>' +
+
+            '<div class="row">' +
+            '<label type="tel" class="form-label">Numero de telefono:</label>' +
+            '<input type="number" class="form-control" id="telf">' +
+            '</div>' +
+            '<br>' +
+            '<br>' +
+
+            '<button type="button" class="btn btn-primary" onclick="mandarForm()">Enviar</button>';
     }
-    console.log(info)
-    let form = document.getElementById("form");
-    form.innerHTML= '<div class="row">'+
-       ' <label type="nombre" class="form-label">Nombre:</label>'+
-       ' <input type="text" class="form-control" id="nombre">'+
-        '</div>'+
-        '<br>'+
-        '<br>'+
-
-            '<div class="row">'+
-                '<label type="email" class="form-label">Correo electronico:</label>'+
-               ' <input type="text" class="form-control" id="email">'+
-            '</div>'+
-           ' <br>'+
-                '<br>'+
-
-                    '<div class="row">'+
-                        '<label type="tel" class="form-label">Numero de telefono:</label>'+
-                        '<input type="tel" class="form-control" id="telf">'+
-                    '</div>'+
-                    '<br>'+
-                        '<br>'+
-
-                            '<button type="button" class="btn btn-primary" onclick="mandarForm()">Enviar</button>';
-
-                            }
+    else {
+            alert("Porfavor rellena todos los campos");
+    }
+}
 
 
 let selectPedido = () => {
