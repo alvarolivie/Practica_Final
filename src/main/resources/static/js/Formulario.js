@@ -135,53 +135,8 @@ let siguienteForm = () => {
 }
 
 let cargarForm = () => {
-    /*let form = document.getElementById("form");
-    form.innerHTML= '<div className="row">'+
-                    '<label htmlFor="numPersonas" className="form-label">Indica el numero de personas que van a comer</label>'+
-                    '<input type="number" className="form-control" id="numPersonas">'+
-                    '</div>'+
-                    ' <br>'+
-                    '<br>'+
-                    ' <div className="row">'+
-                    ' <label htmlFor="fecha" className="form-label">Fecha</label>'+
-                    '<input type="date" className="form-control" id="fecha">'+
-                    '</div>'+
-                    '<br>'+
-                    ' <br>'+
-                    ' <div className="row">'+
-                    '<label htmlFor="Ciudad" className="form-label">Ciudad</label>'+
-                    '<select className="custom-select" id="Ciudad">'+
-                    '  <option value="Madrid" selected>Madrid</option>'+
-                    ' <option value="Santander">Santander</option>'+
-                    '<option value="Comillas">Comillas</option>'+
-                    '</select>'+
-                    ' </div>'+
-                    ' <br>'+
-                    '<br>'+
-                    ' <div className="row">'+
-                    '  <label htmlFor="Dir1" className="form-label">Direccion</label>'+
-                    '<input type="text" className="form-control" id="Dir1">'+
-                    ' </select>'+
-                    '</div>'+
-                    '<br>'+
-                    '<br>'+
-                    ' <div className="row">'+
-                    '<label className="text-black">Selecciona si prefieres el arroz a la hora de la comida o de la cena, la hora exacta se determinara luego por correo</label>'+
-                    ' <div className="custom-control custom-radio custom-control-inline">'+
-                    '<input type="radio" id="comida" name="customRadioInline1"'+
-                    'className="custom-control-input" checked>'+
-                    ' <label className="custom-control-label">Comida</label>'+
-                    '</div>'+
-                    '<div className="custom-control custom-radio custom-control-inline">'+
-                    '<input type="radio" id="cena" name="customRadioInline1" className="custom-control-input">'+
-                    '<label className="custom-control-label">Cena</label>'+
-                    '  </div>'+
-                    '</div>'+
-                    '<br>'+
-                    '<br>'+
-                    '<button type="button" className="btn btn-primary" onClick="siguienteForm()">Continuar </button>';*/
     guardarDat();
-    localStorage["info"]=JSON.stringify(info);
+    sessionStorage["info"]=JSON.stringify(info);
     location.reload();
 }
 
@@ -189,7 +144,7 @@ let cargarHTML = () => {
     let numArroz = location.search.substring(1);
     info[0]=numArroz;
     rellenarFoto(numArroz);
-    let storage = localStorage["info"];
+    let storage = sessionStorage["info"];
     if (storage){
         info = JSON.parse(storage);
         console.log(info);
