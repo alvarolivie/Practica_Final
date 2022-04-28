@@ -1,4 +1,4 @@
-let info = ['','1','','sdjaf','','','','',''];
+let info = ['','','','','','','','',''];
 
 let rellenarFoto = (numArroz) => {
     var panel=document.getElementById("fotoydescripcion");
@@ -35,7 +35,9 @@ let rellenarFoto = (numArroz) => {
 
 let guardarDat = () => {
     let inputs = document.getElementsByTagName("input")
-    info[6, 7, 8] = [inputs.item(0).value, inputs.item(1).value, inputs.item(2).value];
+    info[6] = inputs.item(0).value;
+    info[7] = inputs.item(1).value;
+    info[8] = inputs.item(2).value;
     if (info[6]!= '' & info[7]!= '' & info[7]!= '') {
         return true;
     }
@@ -84,13 +86,16 @@ let mandarForm = async () => {
 
 let siguienteForm = () => {
     let inputs = document.getElementsByTagName("input")
-    info[1,2,3] = [inputs.item(0).value, inputs.item(1).value, inputs.item(2).value];
+    info[1] = inputs.item(0).value;
+    info[2] = inputs.item(1).value;
+    info[3] = inputs.item(2).value;
     info[4]=document.getElementById("Ciudad").value;
     if (inputs.item(3).checked) {
         info[5]="COMIDA";
     } else {
         info[5]= "CENA";
     }
+    console.log(info);
     if ((info[1] != '') & (info[2] != '') & (info[3] != '')) {
 
         let form = document.getElementById("form");
@@ -116,6 +121,12 @@ let siguienteForm = () => {
             '<br>' +
             '<button type="button" class="btn btn-primary" onclick="cargarForm()">Atras</button>'+
             '<button type="button" class="btn btn-primary" onclick="mandarForm()">Enviar</button>';
+        let nombre = document.getElementById("nombre");
+        nombre.value = info[6];
+        let email = document.getElementById("email");
+        email.value = info[7];
+        let tel =document.getElementById("telf");
+        tel.value = info[8];
     }
     else {
             alert("Porfavor rellena todos los campos");
@@ -173,6 +184,7 @@ let cargarForm = () => {
     localStorage["info"]=JSON.stringify(info);
     location.reload();
     info = localStorage["info"];
+    console.log(info);
     let numPersonas = document.getElementById("numPersonas");
     numPersonas.value = info[1];
     let fecha = document.getElementById("fecha");
