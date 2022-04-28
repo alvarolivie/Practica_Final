@@ -183,18 +183,21 @@ let cargarForm = () => {
     guardarDat();
     localStorage["info"]=JSON.stringify(info);
     location.reload();
-    info = localStorage["info"];
-    console.log(info);
-    let numPersonas = document.getElementById("numPersonas");
-    numPersonas.value = info[1];
-    let fecha = document.getElementById("fecha");
-    fecha.value = info[2];
-    let dir =document.getElementById("Dir1");
-    dir.value = info[3];
 }
 
 let cargarHTML = () => {
     let numArroz = location.search.substring(1);
     info[0]=numArroz;
     rellenarFoto(numArroz);
+    let storage = localStorage["info"];
+    if (storage){
+        info = JSON.parse(storage);
+        console.log(info);
+        let numPersonas = document.getElementById("numPersonas");
+        numPersonas.value = info[1];
+        let fecha = document.getElementById("fecha");
+        fecha.value = info[2];
+        let dir =document.getElementById("Dir1");
+        dir.value = info[3];
+    }
 }
