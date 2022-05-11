@@ -7,7 +7,7 @@ let rellenarFoto = (numArroz) => {
             '                <img src="resources/estrella.jpg" width="80%" height="80%">\n' +
             '            </div>\n' +
             '            <div class="row">\n' +
-            '                <p class="lead text-muted">Descripcion del arroz aqui ..............................</p>\n' +
+            '                <p class="lead text-muted">Este arroz fue un éxito desde el primer dia que lo hicimos con amigos. Es un arroz con secreto ibérico y morcilla con un poco de miel. Una mezcla rara que sorprende</p>\n' +
             '            </div>';
         panel.innerHTML=diseño;
     }
@@ -16,7 +16,7 @@ let rellenarFoto = (numArroz) => {
             '                <img src="resources/alamar.jpg" width="80%" height="80%">\n' +
             '            </div>\n' +
             '            <div class="row">\n' +
-            '                <p class="lead text-muted">Descripcion del arroz aqui ..............................</p>\n' +
+            '                <p class="lead text-muted">Siempre decimos que lo importante es el producto, en este arroz es necesario. Con estos arroces solemos bajar al puerto de pedreña donde vemos que han cogido ese dia y elegimos en el momento</p>\n' +
             '            </div>';
         panel.innerHTML=diseño;
 
@@ -26,7 +26,7 @@ let rellenarFoto = (numArroz) => {
             '                <img src="resources/conejo.jpg" width="80%" height="80%">\n' +
             '            </div>\n' +
             '            <div class="row">\n' +
-            '                <p class="lead text-muted">Descripcion del arroz aqui ..............................</p>\n' +
+            '                <p class="lead text-muted">Este arroz es el mismo arroz que tomas un dia de primavera en el campo. LLeva verduras variadas y una pieza de carne como liebre o conejo. Un arroz un poco mas tradicional.</p>\n' +
             '            </div>';
         panel.innerHTML=diseño;
 
