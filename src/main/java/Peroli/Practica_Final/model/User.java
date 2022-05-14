@@ -16,4 +16,8 @@ public class User {
 
     @MappedCollection(idColumn = "USERNAME")
     private Set<RoleRef> roles = new HashSet<>();
+
+    public void addRoles(Role role) {
+        roles.add(new RoleRef(role.getRoleId()));
+    }
 }

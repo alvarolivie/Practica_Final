@@ -31,8 +31,7 @@ public class Pedido {
     private Momento momento;
     private String ciudad;
     private String dir1;
-    @Embedded.Nullable
-    private BigDecimal precio;
+    private BigDecimal precio = BigDecimal.valueOf(0);
     private Estado estado = Estado.PENDIENTE;
 
 }
