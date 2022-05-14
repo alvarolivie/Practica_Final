@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @Data
 @Builder
-@Table("PEDIDO")
+@Table("PEDIDOS")
 public class Pedido {
 
     @Id
@@ -33,7 +33,8 @@ public class Pedido {
     private Momento momento;
     private String ciudad;
     private String dir1;
-    private BigDecimal precio = BigDecimal.valueOf(0);
+    @Embedded.Nullable
+    private BigDecimal precio;
     private Estado estado = Estado.PENDIENTE;
 
 }

@@ -19,7 +19,6 @@ public class ServicePedidoImpl implements ServicePedidos {
     @Override
     public void AddPedido(Pedido pedido){
         //añade al repository y devuelvo true si ha funcionado
-        pedido.setPrecio(BigDecimal.valueOf(0));
         pedido.setEstado(Estado.PENDIENTE);
         repositoryPeroli.save(pedido);
     }
