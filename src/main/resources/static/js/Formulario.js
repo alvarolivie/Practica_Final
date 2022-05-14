@@ -69,6 +69,7 @@ let mandarForm = async () => {
         }).then(res => {
             if (res.ok) {
                 alert("Todo correcto");
+                pantallaFinal();
             } else {
                 return res.text().then(text => {
                     throw new Error(text)
@@ -155,4 +156,13 @@ let cargarHTML = () => {
         let dir =document.getElementById("Dir1");
         dir.value = info[3];
     }
+}
+
+let pantallaFinal = () => {
+    let form = document.getElementById("form");
+    form.innerHTML = '<div class="col-md-5 ">\n' +
+        '                <h1 class="display-6 fw-bolder">Pedido solicitado con éxito</h1>\n' +
+        '                <p class="lead fw-normal">Se contactara con usted cuanto antes</p>\n' +
+        '                <a href="Pedido.html" class="btn btn-primary my-2">Volver a pedidos</a>\n' +
+        '            </div>'
 }
