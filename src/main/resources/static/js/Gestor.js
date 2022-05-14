@@ -1,4 +1,5 @@
 let pedidos;
+let info = [];
 
 let cargarPedidos=async()=>{
     //let roles = sessionStorage["roles"];
@@ -105,6 +106,74 @@ let buscaTabla=()=>{
     }
 }
 
+let guardarDat = () =>  {
 
+
+    if (document.getElementById('arroz1').checked) {
+        info[0]=1;
+    } else if (document.getElementById('arroz2').checked) {
+        info[0]= 2;
+    }else if (document.getElementById('arroz3').checked) {
+        info[0]= 3;
+    }
+    info[1]= document.getElementById('numPersonas').value;
+    info[2]= document.getElementById('fecha').value;
+    info[3] = document.getElementById("Ciudad").value;
+    info[4] = document.getElementById('Dir1').value;
+    if (document.getElementById('comida').checked) {
+        info[5]="COMIDA";
+    } else {
+        info[5]= "CENA";
+    }
+    info[6] = document.getElementById('email').value;
+    info[7] = document.getElementById('nombre').value;
+    info[8] = document.getElementById('telf').value
+    console.log(info);
+    if(!info.includes('')) {
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}
+
+let mandarForm = async () => {
+    if (guardarDat()) {
+        fetch("elPeroli/v1/owner/newPedido", {
+            method: "POST",
+            headers: {
+                "content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "email": info[6],
+                "fullname": info[7],
+                "tel": info[8],
+                "personas": info[1],
+                "arroz": info[0],
+                "fecha": info[2],
+                "momento": info[5],
+                "ciudad": info[4],
+                "dir1": info[3]
+            })
+        }).then(res => {
+            if (res.ok) {
+                alert("Todo correcto");
+
+            } else {
+                return res.text().then(text => {
+                    throw new Error(text)
+                })
+            }
+        })
+            .catch(error => {
+                alert("Por favor compruebe los datos");
+            });
+    }
+    else {
+        alert("Porfavor rellena todos los campos")
+    }
+}
 
 
