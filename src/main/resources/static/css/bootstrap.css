@@ -2106,7 +2106,7 @@ progress {
   --bs-table-hover-bg: #e5e6e7;
   --bs-table-hover-color: #000;
   color: #000;
-  border-color: #dfe0e1;
+  border-color: #000;
 }
 
 .table-dark {
@@ -2793,6 +2793,12 @@ textarea.form-control-lg {
 .input-group-lg > .form-select,
 .input-group-sm > .form-select {
   padding-right: 3rem;
+}
+input[value="1"] {
+  accent-color: green;
+}
+input[value="2"] {
+  accent-color: red;
 }
 
 .input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
@@ -11288,6 +11294,7 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+
 }
 
 /*# sourceMappingURL=bootstrap.css.map */

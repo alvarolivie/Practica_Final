@@ -11,8 +11,13 @@
 <img src="resources/liebre.jpg" width="20%" height="100%">
 <h2>Pedidos El Peroli</h2>
 
-<table id="pedidos" class="table table-bordered table-light">
+<table class="table table-bordered table-light">
     <thead class="table-brown">
+    <tr>
+        <td colspan="12">
+            <input id="buscar" type="text" class="form-control" placeholder="Escriba algo para filtrar" onkeyup="buscaTabla()"/>
+        </td>
+    </tr>
         <th>ID</th>
         <th>EMAIL</th>
         <th>NOMBRE</th>
@@ -26,7 +31,7 @@
         <th>PRECIO</th>
         <th>ESTADO</th>
     </thead>
-    <tbody>
+    <tbody id="pedidos">
 
     </tbody>
 
