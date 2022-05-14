@@ -3,9 +3,12 @@
 <head>
     <title>GESTOR DE PEDIDOS</title>
     <link rel="stylesheet" href="css/bootstrap.css">
+    <meta charset="utf-8">
 
 </head>
 <script src="js/Gestor.js"></script>
+<script src="js/bootstrap.js"></script>
+
 <body onload = "cargarPedidos()">
 <div class="container">
 <img src="resources/liebre.jpg" width="20%" height="100%">
@@ -38,6 +41,125 @@
 
 </table>
 
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Añadir un pedido
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content rounded-4 shadow">
+                    <div class="modal-header p-5 pb-4 border-bottom-0">
+                        <!-- <h5 class="modal-title">Modal title</h5> -->
+                        <h2 class="fw-bold mb-0">Añadir un nuevo pedido</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body p-5 pt-0">
+                        <form class="">
+
+                            <div class="row">
+                                <label class="text-black">Arroz</label>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="arroz1" value="1" name="customRadioInline1" class="custom-control-input" checked>
+                                    <label class="custom-control-label">Arroz 1</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="arroz2" value="2" name="customRadioInline1" class="custom-control-input">
+                                    <label class="custom-control-label">Arroz 2</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="arroz3" value="3" name="customRadioInline1" class="custom-control-input">
+                                    <label class="custom-control-label">Arroz 3</label>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row">
+                                <label for="numPersonas" class="form-label">Indica el numero de personas que van a comer</label>
+                                <input type="number" class="form-control" id="numPersonas">
+                            </div>
+
+
+                            <br>
+
+                            <div class="row">
+                                <label for="fecha" class="form-label">Fecha</label>
+                                <input type="date" class="form-control" id="fecha">
+                            </div>
+
+                            <br>
+
+
+                            <div class="row">
+                                <label for="Ciudad" class="form-label">Ciudad</label>
+
+                                <select class="custom-select" id = "Ciudad">
+                                    <option value="Madrid" selected>Madrid</option>
+                                    <option value="Santander">Santander</option>
+                                    <option value="Comillas">Comillas</option>
+
+                                </select>
+                            </div>
+
+
+                            <br>
+                            <div class="row">
+                                <label for="Dir1" class="form-label">Direccion</label>
+                                <input type="text" class="form-control" id = "Dir1">
+
+                                </select>
+                            </div>
+
+                            <br>
+
+
+                            <div class="row">
+                                <label class="text-black">Comida o cena</label>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="comida" name="customRadioInline1" class="custom-control-input" checked>
+                                    <label class="custom-control-label">Comida</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="cena" name="customRadioInline1" class="custom-control-input">
+                                    <label class="custom-control-label">Cena</label>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row">
+                             <label type="nombre" class="form-label">Nombre:</label>
+                             <input type="text" class="form-control" id="nombre">
+                            </div>
+
+                            <br>
+
+                            <div class="row">
+                            <label type="email" class="form-label">Correo electronico:</label>
+                            <input type="text" class="form-control" id="email">
+                            </div>
+
+
+                            <br>
+
+                            <div class="row">
+                            <label class="form-label">Numero de telefono:</label>
+                            <input type="tel" class="form-control" id="telf">
+                            </div>
+
+                            <br>
+
+                            <button type="button" class="btn btn-primary" onclick="mandarForm()">Enviar</button>
+
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
