@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @Data
-@Builder
-@Table("PEDIDOS")
 public class Pedido {
 
     @Id
