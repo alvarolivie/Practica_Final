@@ -35,6 +35,7 @@ public class ServiceUserImpl implements ServiceUser{
 
     @Override
     public Set<RoleRef> getRoles(String username){
+        System.err.println(repoUser.findById(username).get().getRoles());
         return repoUser.findById(username).get().getRoles();
 
     }

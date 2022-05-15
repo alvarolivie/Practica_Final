@@ -21,8 +21,6 @@ public class ControllerOwnerTest {
     public void checkCredentialsTest_ok(){
         String address = "http://localhost:"+port+"/elPeroli/v1/owner/checkCredentials";
 
-        DataRequest data=new DataRequest("aletitas11","lasvacasvuelan");
-        HttpHeaders headers
     }
 
 
