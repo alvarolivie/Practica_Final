@@ -2,7 +2,7 @@ let username;
 let password;
 
 let checkUser=async()=>{
-    if(getDtata()){
+    if(getData()){
         fetch("elPeroli/v1/owner/checkCredentials", {
             method: "POST",
             headers: {
