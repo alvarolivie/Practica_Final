@@ -11,11 +11,13 @@
 
 <body onload = "cargarPedidos()">
 <div class="container">
-<img src="resources/liebre.jpg" width="20%" height="100%">
+    <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <img src="resources/liebre.jpg" width="20%" height="100%">
+    </a>
 <h2>Pedidos El Peroli</h2>
 
 <table class="table table-bordered table-light">
-    <thead class="table-brown">
+    <thead class="table-brown" id="header">
     <tr>
         <td colspan="12">
             <input id="buscar" type="text" class="form-control" placeholder="Escriba algo para filtrar" onkeyup="buscaTabla()"/>

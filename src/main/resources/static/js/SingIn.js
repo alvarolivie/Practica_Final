@@ -41,11 +41,11 @@ let getData=()=>{
 
 let entrarGestor=async()=>{
     let url="elPeroli/v1/owner/getRoles/" +username;
-    let res=await fetch(url);
-    console.log(res);
+    let res= await fetch(url);
     if (res.ok) {
-        let array= res.json()
-        array=array.roles;
+        let array= await res.json()
+        console.log(array);
+        console.log(array.length)
         sessionStorage["roles"]=JSON.stringify(array);
         location.assign("./GestorPedidos.html");
     }

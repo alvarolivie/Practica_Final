@@ -56,8 +56,8 @@ let mandarForm = async () => {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                "email": info[6],
-                "fullname": info[7],
+                "email": info[7],
+                "fullname": info[6],
                 "tel": info[8],
                 "personas": info[1],
                 "arroz": info[0],

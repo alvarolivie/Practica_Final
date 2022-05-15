@@ -65,7 +65,7 @@ public class ControllerOwner {
         }
     }
 
-    @GetMapping("elPeroli/v1/owner/getRoles/{username}")
+    @GetMapping("/getRoles/{username}")
     public ResponseEntity<Set> getRoles(@PathVariable(value = "username") String username){
         Set<RoleRef> set = serviceUser.getRoles(username);
         System.err.println(set);

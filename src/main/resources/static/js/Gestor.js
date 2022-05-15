@@ -1,14 +1,18 @@
 let pedidos;
 let info = [];
 
+
+let estado;
+let numPersonas;
+let precio;
+
+
 let cargarPedidos=async()=>{
-    //let roles = sessionStorage["roles"];
-    let roles = [1,2,3];
+    let roles = JSON.parse(sessionStorage["roles"]);
+    console.log(roles)
     let res=await fetch("elPeroli/v1/owner/viewPedidos");
-    console.log(res);
     if (res.ok) {
         pedidos= await res.json();
-        console.log(pedidos);
     }
     if(roles.length==1){
 
@@ -25,12 +29,33 @@ let cargarPedidos=async()=>{
         }
     }else if(roles.length==2){
 
+        let header=document.getElementById("header");
+        header.innerHTML='<tr>\n' +
+            '        <td colspan="13">\n' +
+            '            <input id="buscar" type="text" class="form-control" placeholder="Escriba algo para filtrar" onkeyup="buscaTabla()"/>\n' +
+            '        </td>\n' +
+            '    </tr>\n' +
+            '        <th>ID</th>\n' +
+            '        <th>EMAIL</th>\n' +
+            '        <th>NOMBRE</th>\n' +
+            '        <th>TELEFONO</th>\n' +
+            '        <th>NUM.COMENSALES</th>\n' +
+            '        <th>ARROZ</th>\n' +
+            '        <th>FECHA</th>\n' +
+            '        <th>COMIDA/CENA</th>\n' +
+            '        <th>CIUDAD</th>\n' +
+            '        <th>DIRECCION</th>\n' +
+            '        <th>PRECIO</th>\n' +
+            '        <th>ESTADO</th>'+
+            '<th>ACTUALIZAR</th>';
+
+
         let tabla = document.getElementById('pedidos');
         for(let i=0; i <pedidos.length; i++){
 
-            let newRow = tabla.insertRow(tabla.length);
+            let newRow = tabla.insertRow(tabla.length+1);
             let pedidoActual=json2array(pedidos[i]);
-            for(let j=0; j<pedidoActual.length; j++){
+            for(let j=0; j<pedidoActual.length+1; j++){
                 let cell = newRow.insertCell(j);
                 if(j==11){
                     if(pedidoActual[j]=="ACEPTADA"){
@@ -39,6 +64,8 @@ let cargarPedidos=async()=>{
                         cell.innerHTML= '<input type="radio" id="aceptado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="1">' + '<input type="radio" id="rechazado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="2" checked>'
                     }else if(pedidoActual[j]=="PENDIENTE"){
                         cell.innerHTML= '<input type="radio" id="aceptado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="1">' + '<input type="radio" id="rechazado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="2">'
+                    }else if(j==12) {
+                        cell.innerHTML = '<button type="button" class="btn btn-secondary" id="actualizarpedido' + pedidoActual[0] + '" name="actualizarpedido" onclick="actualizarPedido('+pedidoActual[0]+')">Actualizar</button>'
                     }
 
                 }else{
@@ -49,26 +76,48 @@ let cargarPedidos=async()=>{
         }
     }else if(roles.length==3){
 
+        let header=document.getElementById("header");
+        header.innerHTML='<tr>\n' +
+            '        <td colspan="13">\n' +
+            '            <input id="buscar" type="text" class="form-control" placeholder="Escriba algo para filtrar" onkeyup="buscaTabla()"/>\n' +
+            '        </td>\n' +
+            '    </tr>\n' +
+            '        <th>ID</th>\n' +
+            '        <th>EMAIL</th>\n' +
+            '        <th>NOMBRE</th>\n' +
+            '        <th>TELEFONO</th>\n' +
+            '        <th>NUM.COMENSALES</th>\n' +
+            '        <th>ARROZ</th>\n' +
+            '        <th>FECHA</th>\n' +
+            '        <th>COMIDA/CENA</th>\n' +
+            '        <th>CIUDAD</th>\n' +
+            '        <th>DIRECCION</th>\n' +
+            '        <th>PRECIO</th>\n' +
+            '        <th>ESTADO</th>'+
+            '<th>ACTUALIZAR</th>';
+
         let tabla = document.getElementById('pedidos');
         for(let i=0; i <pedidos.length; i++){
 
-            let newRow = tabla.insertRow(tabla.length);
+            let newRow = tabla.insertRow(tabla.length+1);
             let pedidoActual=json2array(pedidos[i]);
-            for(let j=0; j<pedidoActual.length; j++){
+            for(let j=0; j<pedidoActual.length+1; j++) {
                 let cell = newRow.insertCell(j);
-                if(j==11){
-                    if(pedidoActual[j]=="ACEPTADA"){
-                        cell.innerHTML= '<input type="radio" id="aceptado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="1" checked>' + '<input type="radio" id="rechazado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="2">';
-                    }else if(pedidoActual[j]=="RECHAZADA"){
-                        cell.innerHTML= '<input type="radio" id="aceptado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="1">' + '<input type="radio" id="rechazado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="2" checked>'
-                    }else if(pedidoActual[j]=="PENDIENTE"){
-                        cell.innerHTML= '<input type="radio" id="aceptado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="1">' + '<input type="radio" id="rechazado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="2">'
+                if (j == 11) {
+                    if (pedidoActual[j] == "ACEPTADA") {
+                        cell.innerHTML = '<input type="radio" id="aceptado' + pedidoActual[0] + '" name="pedido' + pedidoActual[0] + '" value="1" checked>' + '<input type="radio" id="rechazado' + pedidoActual[0] + '" name="pedido' + pedidoActual[0] + '" value="2">';
+                    } else if (pedidoActual[j] == "RECHAZADA") {
+                        cell.innerHTML = '<input type="radio" id="aceptado' + pedidoActual[0] + '" name="pedido' + pedidoActual[0] + '" value="1">' + '<input type="radio" id="rechazado' + pedidoActual[0] + '" name="pedido' + pedidoActual[0] + '" value="2" checked>'
+                    } else if (pedidoActual[j] == "PENDIENTE") {
+                        cell.innerHTML = '<input type="radio" id="aceptado' + pedidoActual[0] + '" name="pedido' + pedidoActual[0] + '" value="1">' + '<input type="radio" id="rechazado' + pedidoActual[0] + '" name="pedido' + pedidoActual[0] + '" value="2">'
                     }
 
-                }else if(j==10){
-                    cell.innerHTML = '<input type="number" id="numPersonas' + pedidoActual[0] + '" name="numPersonas" value="'+pedidoActual[j]+'"><button type="button" class="btn btn-secondary" id="actualizarnumPersonas' + pedidoActual[0] + '" name="actualizarnumPersonas">Actualizar</button>';
-                }else if(j==4){
-                cell.innerHTML = '<input type="text" id="precio' + pedidoActual[0] + '" name="precio" value="'+pedidoActual[j]+'"><button type="button" class="btn btn-secondary" id="actualizarprecio' + pedidoActual[0] + '" name="actualizarprecio">Actualizar</button>';
+                } else if (j == 4) {
+                    cell.innerHTML = '<input type="number" class="form-control" id="numPersonas' + pedidoActual[0] + '" name="numPersonas" value="' + pedidoActual[j] + '">';
+                } else if (j == 10) {
+                    cell.innerHTML = '<input type="text" id="precio' + pedidoActual[0] + '" name="precio" value="' + pedidoActual[j] + '">';
+                }else if(j==12){
+                    cell.innerHTML = '<button type="button" class="btn btn-secondary" id="actualizarpedido' + pedidoActual[0] + '" name="actualizarpedido" onclick="actualizarPedido('+pedidoActual[0]+')">Actualizar</button>'
             }else{
                     cell.innerHTML = pedidoActual[j];
                 }
@@ -78,6 +127,55 @@ let cargarPedidos=async()=>{
     }
 
 }
+
+let actualizarPedido=(id)=>{
+    let url="elPeroli/v1/owner/updatePedido/"+id;
+    if(getData(id)){
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                "content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "personas":numPersonas,
+                "precio":precio,
+                "estado":estado
+
+            })
+        }).then(res => {
+            if (res.ok) {
+                alert("Pedido actualizado");
+            }
+        }).catch(error => {
+            alert("Por favor compruebe los datos");
+        });
+    }
+    else {
+        alert("Porfavor rellena todos los campos")
+    }
+}
+
+let getData=(id)=>{
+    numPersonas = document.getElementById("numPersonas"+id) ;
+    precio =document.getElementById("precio"+id) ;
+    if (document.getElementById("aceptada"+id).checked){
+        estado= "ACEPTADA";
+    }else if (document.getElementById("rechazada"+id).checked){
+        estado= "RECHAZADA";
+    }else{
+        estado="PENDIENTE";
+    }
+
+    if (numPersonas!= '' & precio!= '') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
 
 let json2array=(json)=>{
     let result = [];
@@ -118,8 +216,8 @@ let guardarDat = () =>  {
     }
     info[1]= document.getElementById('numPersonas').value;
     info[2]= document.getElementById('fecha').value;
-    info[3] = document.getElementById("Ciudad").value;
-    info[4] = document.getElementById('Dir1').value;
+    info[4] = document.getElementById("Ciudad").value;
+    info[3] = document.getElementById('Dir1').value;
     if (document.getElementById('comida').checked) {
         info[5]="COMIDA";
     } else {
