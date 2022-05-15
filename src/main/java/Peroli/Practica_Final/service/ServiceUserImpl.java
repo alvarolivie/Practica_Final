@@ -4,8 +4,12 @@ import Peroli.Practica_Final.model.RoleRef;
 import Peroli.Practica_Final.model.User;
 import Peroli.Practica_Final.repository.RepositoryUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
@@ -38,5 +42,12 @@ public class ServiceUserImpl implements ServiceUser{
         System.err.println(repoUser.findById(username).get().getRoles());
         return repoUser.findById(username).get().getRoles();
 
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username){
+        User user = repoUser.findById(username).get();
+        UserDetails newUser = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword() , (Collection<? extends GrantedAuthority>) user.getRoles());
+        return newUser;
     }
 }
