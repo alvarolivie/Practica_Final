@@ -96,7 +96,6 @@ let siguienteForm = () => {
     } else {
         info[5]= "CENA";
     }
-    console.log(info);
     if ((info[1] != '') & (info[2] != '') & (info[3] != '')) {
 
         let form = document.getElementById("form");
