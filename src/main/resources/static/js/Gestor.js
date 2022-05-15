@@ -24,7 +24,12 @@ let cargarPedidos=async()=>{
             for(let j=0; j<pedidoActual.length; j++){
 
                 let cell = newRow.insertCell(j);
-                cell.innerHTML = pedidoActual[j];
+                if (j == 5) {
+                    cell.innerHTML = '<button type="button" id="verArroz' + pedidoActual[0] + '" name="verArroz" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalArroz" onclick="loadArroz(' + pedidoActual[j] + ')">Ver arroz ' + pedidoActual[j] + '</button>';
+                } else{
+                    cell.innerHTML = pedidoActual[j];
+                }
+
             }
         }
     }else if(roles.length==2){
@@ -64,11 +69,12 @@ let cargarPedidos=async()=>{
                         cell.innerHTML= '<input type="radio" id="aceptado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="1">' + '<input type="radio" id="rechazado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="2" checked>'
                     }else if(pedidoActual[j]=="PENDIENTE"){
                         cell.innerHTML= '<input type="radio" id="aceptado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="1">' + '<input type="radio" id="rechazado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="2">'
-                    }else if(j==12) {
-                        cell.innerHTML = '<button type="button" class="btn btn-primary" id="actualizarpedido' + pedidoActual[0] + '" name="actualizarpedido" onclick="actualizarPedido('+pedidoActual[0]+')">Actualizar</button>'
                     }
-
-                }else{
+                }else if(j==12) {
+                        cell.innerHTML = '<button type="button" class="btn btn-primary" id="actualizarpedido' + pedidoActual[0] + '" name="actualizarpedido" onclick="actualizarPedido('+pedidoActual[0]+')">Actualizar</button>'
+                } else if (j == 5) {
+                    cell.innerHTML = '<button type="button" id="verArroz' + pedidoActual[0] + '" name="verArroz" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalArroz" onclick="loadArroz(' + pedidoActual[j] + ')">Ver arroz ' + pedidoActual[j] + '</button>';
+                } else{
                     cell.innerHTML = pedidoActual[j];
                 }
 
@@ -126,6 +132,10 @@ let cargarPedidos=async()=>{
 
             }
         }
+        let final=document.getElementById("final");
+        final.innerHTML='<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">\n' +
+            '        Añadir un pedido\n' +
+            '    </button>';
     }
 
 }
