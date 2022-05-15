@@ -65,7 +65,7 @@ let cargarPedidos=async()=>{
                     }else if(pedidoActual[j]=="PENDIENTE"){
                         cell.innerHTML= '<input type="radio" id="aceptado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="1">' + '<input type="radio" id="rechazado'+pedidoActual[0]+'" name="pedido'+pedidoActual[0]+'" value="2">'
                     }else if(j==12) {
-                        cell.innerHTML = '<button type="button" class="btn btn-secondary" id="actualizarpedido' + pedidoActual[0] + '" name="actualizarpedido" onclick="actualizarPedido('+pedidoActual[0]+')">Actualizar</button>'
+                        cell.innerHTML = '<button type="button" class="btn btn-primary" id="actualizarpedido' + pedidoActual[0] + '" name="actualizarpedido" onclick="actualizarPedido('+pedidoActual[0]+')">Actualizar</button>'
                     }
 
                 }else{
@@ -114,10 +114,12 @@ let cargarPedidos=async()=>{
 
                 } else if (j == 4) {
                     cell.innerHTML = '<input type="number" class="form-control" id="numPersonas' + pedidoActual[0] + '" name="numPersonas" value="' + pedidoActual[j] + '">';
-                } else if (j == 10) {
+                } else if (j == 5) {
+                    cell.innerHTML = '<button type="button" id="verArroz' + pedidoActual[0] + '" name="verArroz" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalArroz" onclick="loadArroz(' + pedidoActual[j] + ')">Ver arroz ' + pedidoActual[j] + '</button>';
+                }else if (j == 10) {
                     cell.innerHTML = '<input type="text" id="precio' + pedidoActual[0] + '" name="precio" value="' + pedidoActual[j] + '">';
                 }else if(j==12){
-                    cell.innerHTML = '<button type="button" class="btn btn-secondary" id="actualizarpedido' + pedidoActual[0] + '" name="actualizarpedido" onclick="actualizarPedido('+pedidoActual[0]+')">Actualizar</button>'
+                    cell.innerHTML = '<button type="button" class="btn btn-primary" id="actualizarpedido' + pedidoActual[0] + '" name="actualizarpedido" onclick="actualizarPedido('+pedidoActual[0]+')">Actualizar</button>'
             }else{
                     cell.innerHTML = pedidoActual[j];
                 }
@@ -126,6 +128,21 @@ let cargarPedidos=async()=>{
         }
     }
 
+}
+
+let loadArroz=async (rice_id) => {
+    let url = "elPeroli/v1/arroz/loadArroz/" + rice_id;
+    let res = await fetch(url);
+    if (res.ok) {
+        let arroz=await res.json();
+        let nombre=arroz.name;
+        let descripcion=arroz.description;
+        let ingredientes= arroz.ingredients;
+        let modal=document.getElementById("modalBody");
+        let mod='Nombre: '+nombre+ '<br>' + 'Descripcion del arroz: '+descripcion+ '<br>' + 'Ingredientes por persona: '+ingredientes+ '<br>';
+        console.log(mod);
+        modal.innerHTML=mod;
+    }
 }
 
 let actualizarPedido=(id)=>{
