@@ -157,11 +157,13 @@ let actualizarPedido=(id)=>{
 }
 
 let getData=(id)=>{
-    numPersonas = document.getElementById("numPersonas"+id) ;
-    precio =document.getElementById("precio"+id) ;
-    if (document.getElementById("aceptada"+id).checked){
+    numPersonas = document.getElementById("numPersonas"+id+"").value ;
+    precio =document.getElementById("precio"+id+"").value ;
+    let aceptado = document.getElementById("aceptado"+id+"");
+    let rechazado = document.getElementById("rechazado"+id+"");
+    if (aceptado.checked){
         estado= "ACEPTADA";
-    }else if (document.getElementById("rechazada"+id).checked){
+    }else if (rechazado.checked){
         estado= "RECHAZADA";
     }else{
         estado="PENDIENTE";
@@ -258,7 +260,7 @@ let mandarForm = async () => {
         }).then(res => {
             if (res.ok) {
                 alert("Todo correcto");
-
+                location.reload(true);
             } else {
                 return res.text().then(text => {
                     throw new Error(text)

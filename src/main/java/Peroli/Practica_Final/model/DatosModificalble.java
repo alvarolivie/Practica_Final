@@ -10,11 +10,6 @@ import java.util.Optional;
 public class DatosModificalble {
 
     private int personas;
-    private int arroz;
-    private LocalDate fecha;
-    private Momento momento;
-    private String ciudad;
-    private String dir1;
     private BigDecimal precio;
     private Estado estado;
 }

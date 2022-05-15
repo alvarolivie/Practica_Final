@@ -45,12 +45,6 @@ public class ServicePedidoImpl implements ServicePedidos {
 
         Pedido pedido = pedido1.get();
         pedido.setPersonas(datos.getPersonas());
-        pedido.setArroz(datos.getArroz());
-        pedido.setFecha(datos.getFecha());
-        pedido.setMomento(datos.getMomento());
-        pedido.setCiudad(datos.getCiudad());
-        pedido.setDir1(datos.getDir1());
-
         pedido.setPrecio(datos.getPrecio());
         pedido.setEstado(datos.getEstado());
         repositoryPedido.save(pedido);
