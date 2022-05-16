@@ -5,12 +5,15 @@ let info = [];
 let estado;
 let numPersonas;
 let precio;
-
+let roles;
 
 let cargarPedidos=async()=>{
-    let roles = JSON.parse(sessionStorage["roles"]);
-    console.log(roles)
-    let res=await fetch("elPeroli/v1/owner/viewPedidos");
+    let user = sessionStorage["username"];
+    let url="elPeroli/v1/owner/getRoles/" +user;
+    let res= await fetch(url);
+    if (res.ok) {
+        roles= await res.json();}
+    res=await fetch("elPeroli/v1/owner/viewPedidos");
     if (res.ok) {
         pedidos= await res.json();
     }

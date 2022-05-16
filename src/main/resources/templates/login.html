@@ -84,15 +84,15 @@
 
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
 </head>
 <body class="text-center">
 
 <main class="form-signin w-100 m-auto">
 
     <div class='container-fluid'>
-    <form th:action="@{/auth/login}">
-        <img class="mb-4" src="../static/resources/liebre.jpg" alt="" width="250" height="150">
+    <form th:action="@{/auth/login}" method="post">
+        <img class="mb-4" th:src="@{/resources/liebre.jpg}" alt="" width="250" height="150">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
         <div class="form-floating">
@@ -105,13 +105,13 @@
         </div>
 
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="entrarGestor()">Sign in</button>
         <p class="mt-5 mb-3 text-muted">&copy; El Peroli</p>
     </form>
     </div>
 </main>
 
-<script src="../static/js/SingIn.js"></script>
+<script th:src="@{/js/SingIn.js}"></script>
 
 </body>
 </html>

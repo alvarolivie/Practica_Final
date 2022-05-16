@@ -3,8 +3,8 @@ INSERT INTO PEDIDO VALUES (2, 'aledelarica@gmail.com','Ale', '654986614', 20, 2,
 INSERT INTO PEDIDO VALUES (3, 'BrunoSanJuan@gmail.com','B.S.J', '671234514', 40, 3, '2022-8-31', 'CENA', 'Madrid', 'serrano 41', 45.20, 'ACEPTADA');
 
 INSERT INTO USER VALUES('alvaro', '$2y$10$6MKdJIP31RsHkp9XwGXX8ew8N8cN9wtEf3qRrDIm6fsFcYXN3LXpW');
-INSERT INTO USER VALUES('aleja', 'ale123456');
-INSERT INTO USER VALUES('bruno', 'bruno1234');
+INSERT INTO USER VALUES('aleja', '$2y$10$XKHIuEMxTGKk5bCq7R.tn.UolCFuz4rXt.1cUVdsqnj7clAPLLqTe');
+INSERT INTO USER VALUES('bruno', '$2y$10$neImUnDSYLZnuqeztYEc8emyhliHeN7q.FHw7dJ0ij3LktX0j5G4K');
 
 INSERT INTO ROLE VALUES(1,'VerDatos', 'El usuario solo puede ver los datos de los pedidos');
 INSERT INTO ROLE VALUES(2, 'AceptarRechazar', 'El usuario puede aceptar o rechazar los distintos pedidos');

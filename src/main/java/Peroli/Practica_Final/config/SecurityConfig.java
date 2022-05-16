@@ -30,10 +30,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return passwordEncoder;
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers();
-    }
 
     @Override
     public void configure(HttpSecurity http) throws Exception{
@@ -42,13 +38,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.and();
 
                 .authorizeRequests()
-                .antMatchers("/Arroces.html","/Comienzo.html","/Contacto.html","/index.html","/Pedido.html","/Pedido2.html","/Servicios.html","/css/**","/resources/**","/js/**","/auth/login").permitAll() //las url que no necesitan auth (login y esas)
+                .antMatchers("/","/Arroces.html","/Comienzo.html","/Contacto.html","/index.html","/Pedido.html","/Pedido2.html","/Servicios.html","/css/**","/resources/**","/js/**","/auth/login", "elPeroli/v1/cliente/**").permitAll() //las url que no necesitan auth (login y esas)
                 .anyRequest().authenticated()
                 .and()
-                .formLogin(login -> login
-                        .loginPage("/auth/login")
-                        .permitAll())
-                .httpBasic();
+                .formLogin()
+                        .loginPage("/auth/login").permitAll()
+                        .defaultSuccessUrl("/GestorPedidos.html");
+
+
     }
 
     @Override
