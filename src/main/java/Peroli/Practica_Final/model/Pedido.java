@@ -24,7 +24,7 @@ public class Pedido {
     @Id
     private Long id;
     private String email;
-    private String fullName;
+    private String fullname;
     private String tel;
     private int personas;
     private int arroz;
