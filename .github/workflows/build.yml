@@ -1,0 +1,22 @@
+name: Demo to setup a project with github actions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: checking out code
+        uses: actions/checkout@v2
+
+      - name: Setting up java env
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Build with Maven
+          run: mvn spring-boot:run
