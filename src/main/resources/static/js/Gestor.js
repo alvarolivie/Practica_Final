@@ -198,7 +198,8 @@ let getData=(id)=>{
         estado="PENDIENTE";
     }
 
-    if (roles.length =3) {
+
+    if (roles.length ==3) {
         numPersonas = document.getElementById("numPersonas" + id + "").value;
         precio = document.getElementById("precio" + id + "").value;
         if (numPersonas!= '' & precio!= '') {
@@ -208,6 +209,15 @@ let getData=(id)=>{
             return false;
         }
     }
+    else (
+        pedidos.forEach(pedido => {
+            pedido = json2array(pedido);
+            if (pedido[0] == id){
+                precio = pedido[10];
+                numPersonas = pedido[4];
+            }
+        })
+    )
     return true;
 
 }
