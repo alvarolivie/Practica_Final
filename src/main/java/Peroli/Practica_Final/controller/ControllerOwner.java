@@ -66,9 +66,9 @@ public class ControllerOwner {
     }
 
     @GetMapping("/getRoles/{username}")
-    public ResponseEntity<Set> getRoles(@PathVariable(value = "username") String username){
-        Set<RoleRef> set = serviceUser.getRoles(username);
-        return ResponseEntity.ok().body(set);
+    public ResponseEntity<ArrayList<Long>> getRoles(@PathVariable(value = "username") String username){
+        ArrayList<Long> roles= serviceUser.getRoles(username);
+        return ResponseEntity.ok().body(roles);
 
     }
 

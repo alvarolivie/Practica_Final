@@ -1,17 +1,13 @@
 package Peroli.Practica_Final.service;
 
-import Peroli.Practica_Final.model.RoleRef;
 import Peroli.Practica_Final.model.User;
 import Peroli.Practica_Final.repository.RepositoryUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ServiceUserImpl implements ServiceUser{
@@ -37,17 +33,18 @@ public class ServiceUserImpl implements ServiceUser{
 
     }
 
-    @Override
-    public Set<RoleRef> getRoles(String username){
-        System.err.println(repoUser.findById(username).get().getRoles());
-        return repoUser.findById(username).get().getRoles();
-
+    public ArrayList<Long> getRoles(String username){
+        ArrayList<Long> roles = new ArrayList<>();
+        repoUser.findById(username).get().getRoles().forEach(role -> roles.add(role.getRoleId()));
+        return roles;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username){
         User user = repoUser.findById(username).get();
-        UserDetails newUser = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword() , (Collection<? extends GrantedAuthority>) user.getRoles());
+        Collection<SimpleGrantedAuthority> roles = new ArrayList<>();
+        user.getRoles().forEach(role -> roles.add(new SimpleGrantedAuthority(role.getRoleId().toString())));
+        UserDetails newUser = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword() , roles);
         return newUser;
     }
 }
