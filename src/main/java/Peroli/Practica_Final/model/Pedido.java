@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.Generated;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Embedded;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.lang.Nullable;
@@ -23,7 +24,7 @@ public class Pedido {
     @Id
     private Long id;
     private String email;
-    private String fullname;
+    private String fullName;
     private String tel;
     private int personas;
     private int arroz;

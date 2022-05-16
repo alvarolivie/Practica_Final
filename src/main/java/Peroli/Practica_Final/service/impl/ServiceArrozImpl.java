@@ -1,8 +1,9 @@
-package Peroli.Practica_Final.service;
+package Peroli.Practica_Final.service.impl;
 
 
 import Peroli.Practica_Final.model.Arroz;
 import Peroli.Practica_Final.repository.RepositoryArroz;
+import Peroli.Practica_Final.service.ServiceArroz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

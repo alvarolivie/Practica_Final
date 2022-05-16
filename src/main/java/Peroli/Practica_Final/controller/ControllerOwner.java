@@ -2,22 +2,16 @@ package Peroli.Practica_Final.controller;
 
 import Peroli.Practica_Final.model.DatosModificalble;
 import Peroli.Practica_Final.model.Pedido;
-import Peroli.Practica_Final.model.RoleRef;
 import Peroli.Practica_Final.model.User;
-import Peroli.Practica_Final.service.ServicePedidoImpl;
 import Peroli.Practica_Final.service.ServicePedidos;
 import Peroli.Practica_Final.service.ServiceUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.lang.NonNull;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
-import java.util.Set;
 
 @RestController()
 @RequestMapping("elPeroli/v1/owner")

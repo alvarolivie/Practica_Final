@@ -1,9 +1,10 @@
-package Peroli.Practica_Final.service;
+package Peroli.Practica_Final.service.impl;
 
 import Peroli.Practica_Final.model.DatosModificalble;
 import Peroli.Practica_Final.model.Estado;
 import Peroli.Practica_Final.model.Pedido;
 import Peroli.Practica_Final.repository.RepositoryPedido;
+import Peroli.Practica_Final.service.ServicePedidos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
