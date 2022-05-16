@@ -43,8 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                        .loginPage("/auth/login").permitAll()
-                        .defaultSuccessUrl("/GestorPedidos.html");
+                .loginPage("/auth/login").permitAll()
+                .defaultSuccessUrl("/GestorPedidos.html");
 
 
     }
