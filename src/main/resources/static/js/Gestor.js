@@ -13,11 +13,12 @@ let cargarPedidos=async()=>{
     let res= await fetch(url);
     if (res.ok) {
         roles= await res.json();}
+        console.log(roles);
     res=await fetch("elPeroli/v1/owner/viewPedidos");
     if (res.ok) {
         pedidos= await res.json();
     }
-    if(roles.length==1){
+    if(!roles.includes(2) & !roles.includes(3)){
 
         let tabla = document.getElementById('pedidos');
         for(let i=0; i <pedidos.length; i++){
@@ -35,7 +36,7 @@ let cargarPedidos=async()=>{
 
             }
         }
-    }else if(roles.length==2){
+    }else if(!roles.includes(3) & roles.includes(2)){
 
         let header=document.getElementById("header");
         header.innerHTML='<tr>\n' +
@@ -83,7 +84,7 @@ let cargarPedidos=async()=>{
 
             }
         }
-    }else if(roles.length==3){
+    }else if(roles.includes(3)){
 
         let header=document.getElementById("header");
         header.innerHTML='<tr>\n' +
@@ -135,8 +136,10 @@ let cargarPedidos=async()=>{
 
             }
         }
-        let final=document.getElementById("final");
-        final.innerHTML='<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">\n' +
+    }
+    if (roles.includes(4)) {
+        let final = document.getElementById("final");
+        final.innerHTML = '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">\n' +
             '        Añadir un pedido\n' +
             '    </button>';
     }

@@ -57,7 +57,7 @@ public class Pedido {
     private Estado estado = Estado.PENDIENTE;
 
 
-   /* public Pedido(Long id, String email, String fullname, String tel, int personas, int arroz, LocalDate fecha, Momento momento, String ciudad, String dir1) {
+   /*public Pedido(Long id, String email, String fullname, String tel, int personas, int arroz, LocalDate fecha, Momento momento, String ciudad, String dir1) {
         this.id = id;
         this.email = email;
         this.fullname = fullname;

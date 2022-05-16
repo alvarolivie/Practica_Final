@@ -9,12 +9,14 @@ INSERT INTO USER VALUES('bruno', '$2y$10$neImUnDSYLZnuqeztYEc8emyhliHeN7q.FHw7dJ
 INSERT INTO ROLE VALUES(1,'VerDatos', 'El usuario solo puede ver los datos de los pedidos');
 INSERT INTO ROLE VALUES(2, 'AceptarRechazar', 'El usuario puede aceptar o rechazar los distintos pedidos');
 INSERT INTO ROLE VALUES(3,'EditarDatos', 'El usuario puede editar los datos de cada pedido');
+INSERT INTO ROLE VALUES(4,'AñadirPedido', 'El usuario puede crear un pedido nuevo');
 
 INSERT INTO USER_ROLE VALUES('alvaro', 1);
 INSERT INTO USER_ROLE VALUES('alvaro', 2);
 INSERT INTO USER_ROLE VALUES('alvaro', 3);
 INSERT INTO USER_ROLE VALUES('aleja', 1);
 INSERT INTO USER_ROLE VALUES('aleja', 2);
+INSERT INTO USER_ROLE VALUES ('aleja', 4);
 INSERT INTO USER_ROLE VALUES('bruno', 1);
 
 INSERT INTO ARROCES VALUES(1,'Arroz clasico El Peroli','Este arroz fue un éxito desde el primer dia que lo hicimos con amigos. Es un arroz con secreto ibérico y morcilla con un poco de miel. Una mezcla rara que sorprende','80 gr arroz, 50 gr secreto iberico, 50 gr morcilla, 20 ml miel, 75 ml vino tinto, 100 gr sofrito');
