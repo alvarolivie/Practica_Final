@@ -1,19 +1,19 @@
 # Practica_Final
 
-##FrontEnd
+## FrontEnd
 
 La página esta dividida en dos secciones de cara al usuario. Tienes lo que ve el cliente que es una página
 página con multiples vistas donde puede llegar hasta la página de solicitar un pedido y la otra cara es un gestor de 
 pedidos para el dueño de la empresa.
 
-###Cliente
+### Cliente
 El cliente tiene multiples vistas para aprender sobre la empresa. Estas se pueden navegar mediante la barra de navegacion
 en la parte superior de la página. Una vez entra en solicitar un pedido, podra elegir entre 
 tres opciones. Tras elegir una de esas tres opciones se le cargará la primera parte del formulario. Este formulario varia
 en funcion de la opcion elegida. Se va validando el formulario para que cuando el usuario mande el pedido, este no falle. 
 Se confirma si se ha mandado el pedido y se vuelve a una página de inicio.
 
-###Dueño
+### Dueño
 
 El dueño puede acceder a una página desde la pantalla inicial donde podra identificarse, hay multiples usuarios disponibles,
 cada uno con unos permisos distintos. Una vez identificado el usuario, este podra ver la tabla de pedidos. Si sus permisos 
@@ -24,7 +24,7 @@ Los usuarios disponibles son los siguientes:
 - aleja, ale123456
 - bruno, bruno1234
 
-##BackEnd
+## BackEnd
 
 El backend empieza con 5 tablas relacionadas entre sí. Tenemos la tabla de pedidos que se relaciona mediante la columna arroz con
 la tabla Arroces que a su vez contiene la informacion sobre los arroces que hacemos. La tabla User guarda el usuario y la contraseña
