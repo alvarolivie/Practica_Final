@@ -198,7 +198,7 @@ let getData=(id)=>{
         estado="PENDIENTE";
     }
 
-    if (roles.length =3) {
+    if (roles.length ==3) {
         numPersonas = document.getElementById("numPersonas" + id + "").value;
         precio = document.getElementById("precio" + id + "").value;
         if (numPersonas!= '' & precio!= '') {

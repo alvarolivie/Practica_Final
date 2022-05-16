@@ -1,5 +1,9 @@
 package Peroli.Practica_Final.controller;
 
+import Peroli.Practica_Final.repository.RepositoryPedido;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
 import Peroli.Practica_Final.model.Momento;
 import Peroli.Practica_Final.model.Pedido;
 import Peroli.Practica_Final.repository.RepositoryPedido;
@@ -20,10 +24,10 @@ import org.springframework.http.HttpStatus;
 import static org.assertj.core.api.BDDAssertions.then;
 
 import java.time.LocalDate;
+import java.util.Iterator;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ControllerOwnerTest {
-
+public class ControllerPedidoTest {
     @LocalServerPort
     private int port;
 
@@ -33,26 +37,27 @@ public class ControllerOwnerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    @Test
-    public void pedidosGetTest() {
-        Iterable<Pedido> pedidos = repositoryPedido.findAll();
+   /* @Test
+    public void clientPostTest() {
 
-        String url = "http://localhost:" + Integer.toString(port) + "/elPeroli/v1/owner/viewPedidos";
+        Pedido pedido = new Pedido(Long.valueOf("4"),"ale@gmail.com","Alejandra","626298810",12,1, LocalDate.of(2023, 1, 1), Momento.CENA,"Madrid","Calle Serrano 14");
+
+        String url = "http://localhost:" + Integer.toString(port) + "/ElPeroli/v1/client/newPedido";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic UGVkcm86MTIzNDU=");
-        HttpEntity<String> entity = new HttpEntity<>(headers);
+        HttpEntity<Pedido> entity = new HttpEntity<>(pedido, headers);
 
 
-        ResponseEntity<Iterable<Pedido>> result = restTemplate.exchange(
+        ResponseEntity<Pedido> result = restTemplate.exchange(
                 url,
-                HttpMethod.GET,
+                HttpMethod.POST,
                 entity,
-                new ParameterizedTypeReference<Iterable<Pedido>>(){}
+                new ParameterizedTypeReference<Pedido>(){}
         );
 
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(result.getBody()).isEqualTo(pedidos);
-    }
+
+    }*/
 
 
 

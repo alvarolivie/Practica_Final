@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @Data
+@Builder
 public class Pedido {
 
     @Id
@@ -42,7 +43,6 @@ public class Pedido {
 
     private int arroz;
 
-    @DateTimeFormat(pattern="mm/dd/yyyy")
     @Future
     private LocalDate fecha;
 
@@ -55,5 +55,51 @@ public class Pedido {
 
     private BigDecimal precio = BigDecimal.valueOf(0);
     private Estado estado = Estado.PENDIENTE;
+
+
+   /* public Pedido(Long id, String email, String fullname, String tel, int personas, int arroz, LocalDate fecha, Momento momento, String ciudad, String dir1) {
+        this.id = id;
+        this.email = email;
+        this.fullname = fullname;
+        this.tel = tel;
+        this.personas = personas;
+        this.arroz = arroz;
+        this.fecha = fecha;
+        this.momento = momento;
+        this.ciudad = ciudad;
+        this.dir1 = dir1;
+    }
+
+    public Pedido(Long id, String email, String fullname, String tel, int personas, int arroz, LocalDate fecha, Momento momento, String ciudad, String dir1, BigDecimal precio, Estado estado) {
+        this.id = id;
+        this.email = email;
+        this.fullname = fullname;
+        this.tel = tel;
+        this.personas = personas;
+        this.arroz = arroz;
+        this.fecha = fecha;
+        this.momento = momento;
+        this.ciudad = ciudad;
+        this.dir1 = dir1;
+        this.precio = precio;
+        this.estado = estado;
+    }*/
+
+    public boolean validar() {
+        boolean fin=false;
+        if(this.getFecha().isAfter(LocalDate.now())){
+            if(this.getPersonas()>=5 && this.getPersonas()<=50){
+                if(this.getDir1().length()>=5 && this.getDir1().length()<=40){
+                    if(this.getFullname().length()>=3 && this.getFullname().length()<=30){
+                        if(this.getTel().length()>=9 && this.getDir1().length()<=12){
+                            fin=true;
+                        }
+
+                    }
+                }
+            }
+        }
+       return fin;
+    }
 
 }
