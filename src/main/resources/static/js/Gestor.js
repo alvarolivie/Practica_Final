@@ -187,8 +187,7 @@ let actualizarPedido=(id)=>{
 }
 
 let getData=(id)=>{
-    numPersonas = document.getElementById("numPersonas"+id+"").value ;
-    precio =document.getElementById("precio"+id+"").value ;
+
     let aceptado = document.getElementById("aceptado"+id+"");
     let rechazado = document.getElementById("rechazado"+id+"");
     if (aceptado.checked){
@@ -199,12 +198,18 @@ let getData=(id)=>{
         estado="PENDIENTE";
     }
 
-    if (numPersonas!= '' & precio!= '') {
-        return true;
+    if (roles.length =3) {
+        numPersonas = document.getElementById("numPersonas" + id + "").value;
+        precio = document.getElementById("precio" + id + "").value;
+        if (numPersonas!= '' & precio!= '') {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
-    else {
-        return false;
-    }
+    return true;
+
 }
 
 
