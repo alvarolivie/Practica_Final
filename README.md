@@ -23,6 +23,7 @@ Los usuarios disponibles son los siguientes:
 - alvaro, alvaro123
 - aleja, ale123456
 - bruno, bruno1234
+- truñez, truñez123
 
 ## BackEnd
 

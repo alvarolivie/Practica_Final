@@ -4,7 +4,7 @@ import Peroli.Practica_Final.model.Momento;
 import Peroli.Practica_Final.model.Pedido;
 import Peroli.Practica_Final.repository.RepositoryPedido;
 import Peroli.Practica_Final.repository.RepositoryUser;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -39,7 +39,7 @@ public class ControllerOwnerTest {
 
         String url = "http://localhost:" + Integer.toString(port) + "/elPeroli/v1/owner/viewPedidos";
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Basic UGVkcm86MTIzNDU=");
+        headers.add("Authorization", "Basic YWx2YXJvOmFsdmFybzEyMw==");
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
 

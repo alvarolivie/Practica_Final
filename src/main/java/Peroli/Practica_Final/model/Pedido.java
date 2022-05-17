@@ -57,7 +57,7 @@ public class Pedido {
     private Estado estado = Estado.PENDIENTE;
 
 
-   /*public Pedido(Long id, String email, String fullname, String tel, int personas, int arroz, LocalDate fecha, Momento momento, String ciudad, String dir1) {
+   public Pedido(Long id, String email, String fullname, String tel, int personas, int arroz, LocalDate fecha, Momento momento, String ciudad, String dir1) {
         this.id = id;
         this.email = email;
         this.fullname = fullname;
@@ -83,7 +83,22 @@ public class Pedido {
         this.dir1 = dir1;
         this.precio = precio;
         this.estado = estado;
-    }*/
+    }
+
+    public Pedido(String email, String fullname, String tel, int personas, int arroz, LocalDate fecha, Momento momento, String ciudad, String dir1) {
+        this.email = email;
+        this.fullname = fullname;
+        this.tel = tel;
+        this.personas = personas;
+        this.arroz = arroz;
+        this.fecha = fecha;
+        this.momento = momento;
+        this.ciudad = ciudad;
+        this.dir1 = dir1;
+    }
+
+    public Pedido() {
+    }
 
     public boolean validar() {
         boolean fin=false;

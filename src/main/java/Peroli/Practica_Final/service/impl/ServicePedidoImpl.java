@@ -20,6 +20,7 @@ public class ServicePedidoImpl implements ServicePedidos {
     public void AddPedido(Pedido pedido){
         //añade al repository y devuelvo true si ha funcionado
         pedido.setEstado(Estado.PENDIENTE);
+        System.err.println("AQUI TAMBIEN"+ pedido);
         repositoryPedido.save(pedido);
     }
 

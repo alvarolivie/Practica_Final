@@ -16,7 +16,8 @@ public class ControllerPedido {
     private ServicePedidos servicePedidos;
 
     @PostMapping("/newPedido")
-    public ResponseEntity<Pedido> AddPedido(@Valid @RequestBody Pedido pedido){
+    public ResponseEntity<Pedido> addPedido(@Valid @RequestBody Pedido pedido){
+        System.err.println("AQUI");
         servicePedidos.AddPedido(pedido);
         return ResponseEntity.ok().body(pedido);
     }

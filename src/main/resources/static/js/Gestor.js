@@ -84,7 +84,7 @@ let cargarPedidos=async()=>{
 
             }
         }
-    }else if(roles.includes(3)){
+    }else if(roles.includes(3)&roles.includes(2)){
 
         let header=document.getElementById("header");
         header.innerHTML='<tr>\n' +
